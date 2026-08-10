@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PTE Practice Bank · All Question Types</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:#f7f8fa;color:#2c2c2a;padding:24px;line-height:1.6}
+.wrap{max-width:900px;margin:0 auto}
+h1{font-size:26px;color:#0c447c;margin:8px 0 4px}
+.sub{color:#5f5e5a;font-size:14px;margin-bottom:16px}
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin-bottom:18px}
+.plan{background:#fff;border:2px solid #e5e3da;border-radius:12px;padding:16px}
+.plan.hot{border-color:#185fa5}
+.plan .pname{font-weight:500;font-size:15px;color:#0c447c}
+.plan .pprice{font-size:22px;font-weight:500;color:#185fa5;margin:4px 0}
+.plan .pdesc{font-size:12px;color:#5f5e5a}
+.plan .ptypes{font-size:11px;color:#888780;margin-top:6px}
+.plan .pbtn{display:block;margin-top:10px;background:#185fa5;color:#fff;text-align:center;border-radius:8px;padding:8px;font-size:13px;text-decoration:none}
+.plan.hot .pbtn{background:#0c447c}
+#gate{background:#fff;border:2px solid #185fa5;border-radius:12px;padding:20px;margin-bottom:16px;text-align:center}
+#gate h2{color:#0c447c;font-size:17px;margin-bottom:6px}
+#gate p{font-size:13px;color:#5f5e5a;margin-bottom:12px}
+#gate input{width:100%;max-width:360px;padding:10px 12px;border:1px solid #b5d4f4;border-radius:8px;font-size:15px;text-align:center;margin-bottom:10px}
+#gate button{background:#185fa5;color:#fff;border:none;border-radius:8px;padding:10px 26px;font-size:15px;cursor:pointer}
+#gate .err{color:#a32d2d;font-size:13px;margin-top:6px;display:none}
+#gate .ok{color:#0f6e56;font-size:13px;margin-top:6px;display:none}
+#gate .demo{font-size:12px;color:#888780;margin-top:10px}
+.free-sec{background:#e1f5ee;border-radius:12px;padding:16px;margin-bottom:16px}
+.free-sec h3{color:#0f6e56;font-size:15px;margin-bottom:8px}
+.free-sec .note{font-size:12px;color:#5f5e5a;margin-bottom:10px}
+.free-row{font-size:13px;padding:6px 0;border-bottom:1px dashed #b7e0cf;cursor:pointer}
+.free-row:last-child{border:none}
+.free-row:hover{background:#f0faf6}
+.free-detail{display:none;background:#fff;border-radius:6px;padding:8px 10px;margin:6px 0 6px 12px;font-size:12px;color:#444;line-height:1.55;border-left:2px solid #0f6e56}
+.free-tag{display:inline-block;background:#e1f5ee;color:#0f6e56;font-size:10px;border-radius:3px;padding:1px 6px;margin-left:6px;vertical-align:middle}
+.qrow{background:#fff;border:1px solid #e5e3da;border-radius:8px;padding:8px 12px;margin-bottom:6px;font-size:13px}
+.qrow .qno{color:#888780;font-size:11px;margin-right:6px}
+.qrow.locked{color:#9a9890;cursor:default}
+.qrow.locked .ltag{display:inline-block;background:#f3f1ea;color:#9a9890;font-size:10px;border-radius:3px;padding:1px 6px;margin-left:6px}
+.qrow.free{cursor:pointer;border-color:#b7e0cf}
+.qrow.free:hover{background:#f0faf6}
+.free-detail{display:none;background:#fff;border-radius:6px;padding:10px 12px;margin:2px 0 8px 4px;font-size:12px;color:#444;line-height:1.6;border-left:2px solid #0f6e56}
+.free-detail .faudio{margin-top:8px}
+.free-detail audio{width:100%;height:32px}
+.methods{background:#fff;border:2px solid #185fa5;border-radius:12px;padding:16px;margin-bottom:16px}
+.methods h3{color:#0c447c;font-size:16px;margin-bottom:6px}
+.methods .note{font-size:12px;color:#5f5e5a;margin-bottom:12px}
+.mcard{background:#f7f8fa;border:1px solid #e5e3da;border-radius:10px;margin-bottom:10px;overflow:hidden}
+.mhead{background:#eef3fa;padding:10px 14px;font-size:14px;color:#0c447c;font-weight:500;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.mhead:hover{background:#e3ecf7}
+.mbody{display:none;padding:12px 14px;font-size:13px;color:#3c3b39}
+.mbody.show{display:block}
+.mbody h5{color:#0f6e56;font-size:12px;margin:10px 0 6px}
+.mbody ol{margin:0 0 8px 18px;padding:0}
+.mbody li{margin-bottom:4px}
+.mbody .tpl{background:#fff;border-left:2px solid #185fa5;border-radius:4px;padding:8px 10px;margin:4px 0;color:#333}
+.mbody .tpl i{color:#185fa5}
+.mcat{margin:8px 0;padding:6px 8px;background:#fff;border-radius:6px}
+.mcat b{color:#0f6e56}
+.mcard.locked .mhead{background:#f6f4ee;color:#5f5e5a;cursor:default}
+.chip{display:inline-block;background:#f3f1ea;color:#7a7871;border:1px dashed #c9c6bb;border-radius:6px;padding:5px 10px;margin:4px 6px 4px 0;font-size:12px;cursor:pointer}
+.chip:hover{background:#faeeda;color:#854f0b}
+.locknote{color:#854f0b;font-size:12px;margin-top:10px;padding:8px 10px;background:#fdf3e3;border-radius:6px}
+.qpro{background:#f0f4fb;border:1px solid #d5e2f3;border-radius:8px;padding:10px 12px;margin-bottom:10px;font-size:13px;color:#333;line-height:1.6}
+.qpro .qimg{max-width:100%;border-radius:6px;margin-top:8px;border:1px solid #e0e6ee}
+.ans{background:#f5fbf7;border:1px solid #d9eee2;border-radius:8px;padding:10px 12px;font-size:13px;color:#333;line-height:1.6}
+.qwork{background:#fdf8ec;border:1px solid #f0e2bd;border-radius:8px;padding:10px 12px;margin-bottom:10px;font-size:12.5px;color:#4a3f22;line-height:1.65}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.tab{background:#fff;border:1px solid #d3d1c7;border-radius:8px;padding:6px 12px;font-size:13px;cursor:pointer}
+.tab.active{background:#185fa5;color:#fff;border-color:#185fa5}
+.tab.locked{opacity:.5}
+#search{width:100%;padding:10px 14px;border:1px solid #d3d1c7;border-radius:8px;font-size:14px;margin-bottom:14px}
+.count{font-size:12px;color:#888780;margin-bottom:10px}
+.qcard{background:#fff;border:1px solid #e5e3da;border-radius:10px;padding:12px 14px;margin-bottom:8px}
+.qcard .qt{font-weight:500;font-size:14px}
+.qcard .meta{font-size:12px;color:#888780;margin-top:2px}
+.qcard .tag{display:inline-block;font-size:11px;border-radius:4px;padding:1px 8px;margin-left:6px}
+.tag.free{background:#e1f5ee;color:#0f6e56}
+.qcard .detail{display:none;border-top:1px dashed #e5e3da;margin-top:10px;padding-top:10px;font-size:13px}
+.qcard .detail b{color:#185fa5}
+.qcard .ans{background:#f7f8fa;border-radius:8px;padding:10px 12px;margin:8px 0;white-space:pre-wrap}
+.qcard .au{margin-top:8px}
+.qcard .play{background:#185fa5;color:#fff;border:none;border-radius:6px;padding:6px 14px;font-size:12px;cursor:pointer}
+.qcard .play:disabled{background:#b5d4f4;cursor:wait}
+.loading{text-align:center;color:#5f5e5a;font-size:13px;padding:30px;display:none}
+footer{text-align:center;font-size:12px;color:#888780;margin:22px 0 8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>PTE Practice Bank</h1>
+  <p class="sub">All 7 question types · DI, SGD, RL, RTS, SST, SWT, WE · model answers &amp; follow-along audio</p>
+
+  <div class="plans">
+    <div class="plan">
+      <div class="pname">Speaking + SST</div>
+      <div class="pprice">$89.9<span style="font-size:13px">/mo</span></div>
+      <div class="pdesc">DI · SGD · RL · RTS · SST</div>
+      <div class="ptypes">Describe Image, Summarize Group Discussion, Retell Lecture, Respond to a Situation, Summarize Spoken Text</div>
+      <a class="pbtn" href="#gate">Subscribe</a>
+    </div>
+    <div class="plan">
+      <div class="pname">Writing</div>
+      <div class="pprice">$69.9<span style="font-size:13px">/mo</span></div>
+      <div class="pdesc">SWT · WE</div>
+      <div class="ptypes">Summarize Written Text, Write Essay</div>
+      <a class="pbtn" href="#gate">Subscribe</a>
+    </div>
+    <div class="plan hot">
+      <div class="pname">Complete · All 7</div>
+      <div class="pprice">$149.9<span style="font-size:13px">/mo</span></div>
+      <div class="pdesc">Everything included</div>
+      <div class="ptypes">Best value — all question types in one plan</div>
+      <a class="pbtn" href="#gate">Subscribe</a>
+    </div>
+  </div>
+
+  <div id="gate">
+    <h2>🔑 Member Area</h2>
+    <p>Already subscribed? Enter your license key to unlock all questions.</p>
+    <input id="keyInput" placeholder="XXXX-XXXX-XXXX-XXXX" autocomplete="off">
+    <div><button onclick="unlock()">Unlock</button></div>
+    <div class="err" id="errMsg">Invalid or expired license key.</div>
+    <div class="ok" id="okMsg"></div>
+    <div class="demo" id="demoHint"></div>
+  </div>
+
+  <div class="free-sec" id="freeSec">
+    <h3>🎁 Free preview — pick a type, browse questions &amp; preview templates</h3>
+    <div class="note">Each type shows its method &amp; template preview, then the full question list. 🎁 = free sample (tap to preview). 🔒 = member only — unlock with your license key.</div>
+    <div class="tabs" id="freeTabs"></div>
+    <div id="freeList"></div>
+  </div>
+
+  <div class="loading" id="loading">Loading member content...</div>
+  <div id="memberArea" style="display:none">
+    <div class="methods" id="methods" style="display:none">
+      <h3>📖 Methods &amp; Templates</h3>
+      <div class="note">Unlocked — here are the step-by-step methods and ready-made templates for every question type.</div>
+      <div id="methodList"></div>
+    </div>
+    <div class="tabs" id="tabs"></div>
+    <input id="search" placeholder="🔍 Search questions...">
+    <div class="count" id="count"></div>
+    <div id="list"></div>
+  </div>
+
+  <footer>PTE Practice Bank &middot; Updated monthly &middot; © 2026</footer>
+</div>
+
+<script>
+const FREE = {"di": [{"no": 2, "title": "Typing Hands", "answer": "This image shows the correct and incorrect ways of placing your hands when typing. In the top area of the picture, we can see different hand positions on the keyboard. The correct way is marked as right, where the hands and wrists are kept straight and relaxed. In contrast, the wrong ways are shown next to it, where the wrists are bent or the fingers are in awkward positions. Looking at the picture more carefully, these examples compare the healthy typing posture with the unhealthy ones. Overall, this picture clearly shows that keeping your hands straight while typing is the correct and healthy way.", "audio": "di/DI_2.mp3", "prompt": "", "prompt_img": "img/di/DI_2.png", "prompt_audio": "", "work": ""}, {"no": 7, "title": "Height of Tree", "answer": "This image shows the height of different tree species. To begin with, the tallest species is Douglas Fir, at about 280 feet. In contrast, the lowest is Hemlock, at about 130 feet. Besides, the second highest is Spruce, at about 230 feet, and Cedar is about 200 feet. Looking at the graph more carefully, we can see the heights are measured in feet, which makes the comparison easy. Meanwhile, compared with Hemlock, both Cedar and Spruce are clearly taller. In conclusion, this graph clearly shows that Douglas Fir is the tallest among the four tree species.", "audio": "di/DI_7.mp3", "prompt": "", "prompt_img": "img/di/DI_7.png", "prompt_audio": "", "work": ""}, {"no": 8, "title": "Earth Structure", "answer": "This image shows the structure of the earth. According to the data, there are four layers in total. To begin with, the thickest layer is the Mantle, at about 1800 miles. In contrast, the thinnest is the Crust, at only 5 to 25 miles. Besides, the Outer Core is about 1400 miles, and the Inner Core is about 800 miles. Looking at the graph more carefully, the depths are also given in kilometres, such as 2900 kilometres for the Mantle. In conclusion, this graph clearly shows the four layers of the earth and their different thickness.", "audio": "di/DI_8.mp3", "prompt": "", "prompt_img": "img/di/DI_8.png", "prompt_audio": "", "work": ""}, {"no": 11, "title": "Global Warming", "answer": "This image shows the global warming predictions for the period from 2070 to 2100, compared with the average from 1960 to 1990. According to the map, different colors show different levels of temperature increase. In the northern regions, especially around the Arctic, the temperature increase is the largest. In contrast, some ocean areas in the south show a smaller increase. Besides, the map is based on the HadCM3 model, and the unit is degrees Celsius. Overall, this map clearly shows that most parts of the world will become warmer, and the northern areas will warm the most.", "audio": "di/DI_11.mp3", "prompt": "", "prompt_img": "img/di/DI_11.png", "prompt_audio": "", "work": ""}, {"no": 18, "title": "Upper Arms", "answer": "This image shows the structure of the human arm and hand. In the top area of the picture, we can see the upper arm bone. In the middle, there are the lower arm bones, which lead to the wrist bones. Besides, the picture shows the metacarpals, which are the bones in the palm of the hand, and the fingers at the end. Looking at the picture more carefully, all the main parts of the arm are clearly labeled. Overall, this picture clearly shows the basic structure of the human arm, from the upper arm bone down to the fingers.", "audio": "di/DI_18.mp3", "prompt": "", "prompt_img": "img/di/DI_18.png", "prompt_audio": "", "work": ""}], "sgd": [{"no": 1, "title": "Accommodation Next Year", "answer": "The discussion involves three people talking about the plan for accommodation next year. According to the recording, the first speaker begins by talking about the possibility of staying in the university accommodation for another year. What's more, she mentions the convenience of living close to the campus and the library, which saves travelling time. Lastly, she highlights the cheaper rent compared with private apartments, with all the bills included. The second speaker replies to the first speaker about the option of renting a private apartment off campus for more space and privacy. What's more, he notes that the freedom of cooking meals and having a quieter study environment. Furthermore, he recommends the need to compare the transport costs and the distances carefully. As for the third speaker, she opinion is about the importance of checking the budget carefully since accommodation is expensive. Following this, she stresses the suggestion of sharing a flat with classmates to reduce the expenses. What's more, she points to the need for the advice to apply for accommodation early because good rooms are limited. In conclusion, the group is discussing the plan for accommodation next year from different perspectives.", "audio": "sgd/SGD_01.mp3", "prompt": "Listen to the group discussion about: Accommodation Next Year", "prompt_img": "", "prompt_audio": "sgd_q/SGD_01.mp3", "work": ""}], "rl": [{"no": 1, "title": "Australian export", "answer": "In this lecture, the speaker mainly talks about Australian export. It gives us a clear introduction to this topic. First, the speaker mentions Australia's isolation from the North. In addition, the lecture points out that China's rise as an exporter is quite important. Moreover, the speaker highlights the changing world situation. Besides, the lecture also refers to the opportunity for Australia. These points help us understand Australian export better. To sum up, the lecture focuses on Australian export, which is very informative and educational.", "audio": "rl/RL_001.mp3", "prompt": "Listen to the lecture about: Australian export", "prompt_img": "", "prompt_audio": "rl_q/RL_001.mp3", "work": ""}, {"no": 2, "title": "Brain development", "answer": "In this lecture, the speaker mainly talks about Brain development. It gives us a clear introduction to this topic. First, the speaker mentions the development of the human brain. In addition, the lecture points out that the sensing pathways of vision and hearing are quite important. Moreover, the speaker highlights the language skill of babies. Besides, the lecture also refers to the peak age of language learning. These points help us understand Brain development better. To sum up, the lecture focuses on Brain development, which is very informative and educational.", "audio": "rl/RL_002.mp3", "prompt": "Listen to the lecture about: Brain development", "prompt_img": "", "prompt_audio": "rl_q/RL_002.mp3", "work": ""}, {"no": 3, "title": "Darkness between galaxies", "answer": "In this lecture, the speaker mainly talks about Darkness between galaxies. It gives us a clear introduction to this topic. First, the speaker mentions the largest photo of galaxies. In addition, the lecture points out that the Hubble Ultra-Deep Field is quite important. Moreover, the speaker highlights the darkness of galaxies. Besides, the lecture also refers to the production of the photo. These points help us understand Darkness between galaxies better. To sum up, the lecture focuses on Darkness between galaxies, which is very informative and educational.", "audio": "rl/RL_003.mp3", "prompt": "Listen to the lecture about: Darkness between galaxies", "prompt_img": "", "prompt_audio": "rl_q/RL_003.mp3", "work": ""}, {"no": 4, "title": "European Countries' Educational Expenditure", "answer": "In this lecture, the speaker mainly talks about European Countries' Educational Expenditure. It gives us a clear introduction to this topic. First, the speaker mentions the educational expenditure in Europe. In addition, the lecture points out that the least funding for education is quite important. Moreover, the speaker highlights the 1.08% of GDP on education. Besides, the lecture also refers to the OECD average line. These points help us understand European Countries' Educational Expenditure better. To sum up, the lecture focuses on European Countries' Educational Expenditure, which is very informative and educational.", "audio": "rl/RL_004.mp3", "prompt": "Listen to the lecture about: European Countries' Educational Expenditure", "prompt_img": "", "prompt_audio": "rl_q/RL_004.mp3", "work": ""}, {"no": 5, "title": "Bomb calorimeter", "answer": "In this lecture, the speaker mainly talks about Bomb calorimeter. It gives us a clear introduction to this topic. First, the speaker mentions the energy contained in food. In addition, the lecture points out that the thermometer in the device is quite important. Moreover, the speaker highlights the heat of the food. Besides, the lecture also refers to the digestible energy of the body. These points help us understand Bomb calorimeter better. To sum up, the lecture focuses on Bomb calorimeter, which is very informative and educational.", "audio": "rl/RL_005.mp3", "prompt": "Listen to the lecture about: Bomb calorimeter", "prompt_img": "", "prompt_audio": "rl_q/RL_005.mp3", "work": ""}], "rts": [{"no": 1, "title": "Returning damaged library book", "answer": "Excuse me, I'm sorry for returning the library book in such a damaged condition. Actually, I accidentally spilled coffee on it last week. And also, I want to take responsibility for what happened, and I'm truly sorry about it. So, I've already ordered a replacement copy, and I can bring it to you by tomorrow. Anyway, thank you for your understanding, and I'll make sure this kind of thing never happens again.", "audio": "rts/RTS_001.mp3", "prompt": "You are at the library and you need to apologize to the librarian for returning the damaged library book.", "prompt_img": "", "prompt_audio": "rts_q/RTS_001.mp3", "work": ""}, {"no": 2, "title": "Late for Presentation", "answer": "Excuse me, professor. Actually, I'm sorry for being late to today's presentation. And also, I want to take responsibility for what happened, and I'm truly sorry about it. So, I have already prepared all my slides and I'm ready to present right now if it's okay. Anyway, thank you for your understanding, and I'll make sure this kind of thing never happens again.", "audio": "rts/RTS_002.mp3", "prompt": "You are at the classroom/meeting and you need to apologize to a professor or classmate for being late for a presentation.", "prompt_img": "", "prompt_audio": "rts_q/RTS_002.mp3", "work": ""}], "sst": [{"no": 1, "title": "Safe Drinking Water", "answer": "This lecture mainly talks about drinking water . Firstly , the speaker emphasizes water is a critical component of our environment and our bodies . Also , he mentions water is a largely neglected area of environmental law . Lastly , the speaker believes there is a rapid increase in our knowledge about chemical threats . In conclusion , this lecture is very informative .", "audio": "sst/SST_001_A.mp3", "prompt": "Today I want to talk about water and the law that surrounds drinking water , to talk about its quality , talk about what your rights are to clean water , to also give you a sense of what key threats are to drinking water , what your exposure might be , and what we might to do about it , both legally but also personally . Water is a critical component of our environment and our bodies . Your body is close to 70 percent water . You can go for several weeks , two or three on average , without food . You can only go for about four minutes without air . And you can go for maybe four or five days without water before you die . So water is absolutely critical . And one of the key arguments I want to make today is that it ' s a largely neglected area of environmental law , given the rapid increase in our knowledge about chemical threats to water quality and where those threats come from . 资料领取 SST 满分答题框架 SST 精华预测关键词速记 猩际精华预测 猩际周预测 练习讨论 互动讨论 练习集锦 我的练习 跟着老师一起练习 全部我的 /", "prompt_img": "", "prompt_audio": "sst_pa/SST_33.mp3", "work": ""}, {"no": 2, "title": "Market Economy", "answer": "Democracies have succeeded in tempering the market economy . For example , the Industrial Revolution had a very negative effect on people . In order to reverse the damage , we implemented regulations that led to better environmental conditions . As a result , we have made the market economy work better than it did a hundred years ago .", "audio": "sst/SST_002_A.mp3", "prompt": "Within most developed countries , notions of pragmatism , notions of the fact that we have democracies , have succeeded in tempering the market economy . In the 19th century , 18th century , the Industrial Revolution had a very negative effect on people , particularly working classes all over the world . We see data where life expectancy was reduced , heights were reduced . We were looking at the medical record . We can see that actually , living standards , much among large fractions of population , actually went down . But eventually , we pass the legislation about working conditions . And eventually , we circumscribe some of the worst kinds of behavior . We eventually , in the 20th century , we put regulations that imposed better environmental conditions . And so some of the damage was reversed , and that we have made the market economy work in ways that the benefits of the all is far more what we shared in the world a hundred years ago . 资料领取 SST 满分答题框架 SST 精华预测关键词速记 猩际精华预测 猩际周预测 练习讨论 互动讨论 练习集锦 我的练习 跟着老师一起练习 全部我的 /", "prompt_img": "", "prompt_audio": "sst_pa/SST_74.mp3", "work": ""}, {"no": 3, "title": "Globalization and Detraditionalization", "answer": "Globalization is the idea that we all live in a global village . With instant communications , we can share ideas and access cultural artifacts from countries all over the world . However , it also leads to the disappearance or erosion of traditional values . To be more specific , young people are rejecting the culture they have grown up in .", "audio": "sst/SST_003_A.mp3", "prompt": "So , I think you all know what I mean by globalization , don ' t you ? This is the idea that we all live in a global village . With instant communications , we can share ideas , and consume cultural artifacts from countries all over the world , just by going into the Internet and all dream up , basically . The world is shrinking . In terms of speeds , it is accelerating , but in terms of distance , it ' s shrinking . What do I mean by detraditionalization ? I mean the disappearance or the erosion , for the better word to use , the erosion of traditional values , of conventional ways of doing things , of conventional moralities . More and more young people around the world are rejecting the culture they grow up in , and it ' s probably a little bit cruel . But some imitating a Hollywood model of society , rather than the one which they inherit from their local tradition background . OK ? 资料领取 SST 满分答题框架 SST 精华预测关键词速记 猩际精华预测 猩际周预测 练习讨论 互动讨论 练习集锦 我的练习 跟着老师一起练习 全部我的 /", "prompt_img": "", "prompt_audio": "sst_pa/SST_108.mp3", "work": ""}, {"no": 4, "title": "Canned Food", "answer": "The Great Depression was the beginning of modern food technology , when canned foods entered the market . Meanwhile , refrigerators were very popular in urban and rural areas . Moreover , the Rural Electrification Administration enabled farmers to purchase appliances , meaning frozen foods were experiencing rapid growth . As a result of these changes , people started to think about supermarkets with many freezer cases and canned foods .", "audio": "sst/SST_004_A.mp3", "prompt": "One of the things that was going on during the Great Depression was the beginning of this sort of modern food technology that rules , you know , the way Americans eat today . That is there are a lot of canned foods were being - coming onto the market at the time . And also , refrigerators were really becoming very , very popular during the Great Depression , both in cities and in rural parts of the country . Thanks to electrification , the Rural Electrification Administration , people could buy appliances . You know , farmers could buy appliances . And that meant frozen foods were becoming big . And , you know , at that time , few people could afford to buy them during the early years of the Great Depression . But , you know , gradually , these things picked up . And so this was , like , the sort of beginning of the era when people were starting to think about supermarkets with rows and rows of freezer cases and rows and rows of canned foods . 资料领取 SST 满分答题框架 SST 精华预测关键词速记 猩际精华预测 猩际周预测 练习讨论 互动讨论 练习集锦 我的练习 跟着老师一起练习 全部我的 /", "prompt_img": "", "prompt_audio": "sst_pa/SST_120.mp3", "work": ""}, {"no": 5, "title": "Separation of Power", "answer": "The separation of power maintains balance and protects freedom by dividing government authority . Legislative power makes laws , executive power carries them out , and judicial power interprets them . Once with blurry lines between the three , they are now clearly defined in the U . S . Constitution . It prevents any single branch from growing too powerful and improves fairness and stability .", "audio": "sst/SST_005_A.mp3", "prompt": "The separation of power helps maintain balance and protect freedom by dividing government authority into three distinct branches . In the three systems , the first one is legislation , the second , the execution , and the third , judicial power . Legislative power means to make laws , and executive power is to carry out laws by officers appointed by presidents , while judicial power is to interpret laws and is crucial to the constitution . This structure is clearly defined in the U . S . constitution , especially in Article I , II , and III . Nowadays , they clarify what they should do , but in the past , there was a blurry line between any two of them . Let ' s look at two important reasons why this separation matters : First , it prevents any single branch from becoming too powerful . When one branch holds too much authority , freedom can be threatened . By separating the power to create , enforce , and interpret laws , the system builds in checks and balances . Second , this structure improves fairness and stability . Since judges interpret laws without influence from politicians , decisions can be made based on the constitution rather than politics . Meanwhile , the executive branch carries out daily governance , and the legislative branch reflects the will of the people through elected representatives . 机经点评: An old man's short lecture about power. ... separate clearly ... construction ... 'separate power' is repeatedly mentioned. ... during the last century ... what legislation does, what executive does. The final sentence is '... a blurry line between executive power and legislative power.'. Key words: law, president. 资料领取 SST 满分答题框架 SST 精华预测关键词速记 猩际精华预测 猩际周预测 练习讨论 互动讨论 练习集锦 我的练习 跟着老师一起练习 全部我的 /", "prompt_img": "", "prompt_audio": "sst_pa/SST_130.mp3", "work": ""}], "swt": [{"no": 1, "title": "2014 Olympics", "answer": "Major athletic events around the globe are aiming to reduce their carbon footprint as part of a world-wide climate network, and the sporting events are particularly significant for inspiring further global action on the environment, while the organizers of the Sochi Olympics will invest an estimated $1.75 billion in energy conservation and renewable energy, with the funding dedicated to improving transport infrastructure and offsetting greenhouse gas emissions.", "audio": "", "prompt": "11 February 2009 – Major athletic events around the globe – from the 2014 Sochi Olympics to an annual powerboat race in Norwegian fjords – are striving to neutralize their carbon footprint as part of a world-wide climate network, the United Nations Environment Programme (UNEP) said today.\n\nThe sporting events are the latest participants to join the network, and are particularly important for inspiring further global action on the environment, said Achim Steiner, UNEP Executive Director.\n\n\"It is, therefore, heartening that this passion for excellence increasingly encompasses environmental performance, with sporting organizations raising the bar ever higher at each and every tournament,\" he added.\n\nOrganizers of the 2014 Sochi Olympic and Paralympic Winter Games – to be held in a unique natural setting between the shores of the Black Sea and the soaring snow-capped Caucasus Mountains – say they will put an estimated $1.75 billion into energy conservation and renewable energy.\n\nThat investment will be dedicated to improving transport infrastructure and offsetting greenhouse gas emissions from the use of electricity, air travel and ground transportation, the reforestation of Sochi National Park and the development of green belts in the city.", "prompt_img": "", "prompt_audio": "", "work": "SWT #1 · 2014 Olympics · Full Working Process\n\n📄 Original Text:\n11 February 2009 – Major athletic events around the globe – from the 2014 Sochi Olympics to an annual powerboat race in Norwegian fjords – are striving to neutralize their carbon footprint as part of a world-wide climate network, the United Nations Environment Programme (UNEP) said today.\n\nThe sporting events are the latest participants to join the network, and are particularly important for inspiring further global action on the environment, said Achim Steiner, UNEP Executive Director.\n\n\"It is, therefore, heartening that this passion for excellence increasingly encompasses environmental performance, with sporting organizations raising the bar ever higher at each and every tournament,\" he added.\n\nOrganizers of the 2014 Sochi Olympic and Paralympic Winter Games – to be held in a unique natural setting between the shores of the Black Sea and the soaring snow-capped Caucasus Mountains – say they will put an estimated $1.75 billion into energy conservation and renewable energy.\n\nThat investment will be dedicated to improving transport infrastructure and offsetting greenhouse gas emissions from the use of electricity, air travel and ground transportation, the reforestation of Sochi National Park and the development of green belts in the city.\n\n🔍 Step 1 — Key Sentences:\nS1: \"11 February 2009 – Major athletic events around the globe – from the 2014 Sochi Olympics to an annual powerboat race in Norwegian fjords – are striving to neutralize their carbon footprint as part of a world-wide climate network, the United Nations Environment Programme (UNEP) said today.\"\nS2: \"The sporting events are the latest participants to join the network, and are particularly important for inspiring further global action on the environment, said Achim Steiner, UNEP Executive Director.\"\nS3: \"Organizers of the 2014 Sochi Olympic and Paralympic Winter Games – to be held in a unique natural setting between the shores of the Black Sea and the soaring snow-capped Caucasus Mountains – say they will put an estimated $1.75 billion into energy conservation and renewable energy.\"\nS4: \"That investment will be dedicated to improving transport infrastructure and offsetting greenhouse gas emissions from the use of electricity, air travel and ground transportation, the reforestation of Sochi National Park and the development of green belts in the city.\"\n\n✂️ Dropped S3 (personal comment) to control the word count\n\n🔗 Step 2 — Linking Plan (relationship → linker):\n  · 句 1 → 句 2: coordination — use \"and\" (alt: as well as / moreover)\n  · 句 2 → 句 3: contrast — use \"while\" (alt: whereas / and)\n  · 句 3 → 句 4: continuation — use \"with\" (alt: and / in which)\n\n✏️ Step 3 — Word Replacements:\n  · \"striving to neutralize\" → \"aiming to reduce\"\n  · \"particularly important\" → \"particularly significant\"\n  · \"will put ... into\" → \"will invest ... in\"\n  · \"That investment will be dedicated to\" → \"with the funding dedicated to\"\n\n✅ Step 4 — Model Answer:\nMajor athletic events around the globe are aiming to reduce their carbon footprint as part of a world-wide climate network, and the sporting events are particularly significant for inspiring further global action on the environment, while the organizers of the Sochi Olympics will invest an estimated $1.75 billion in energy conservation and renewable energy, with the funding dedicated to improving transport infrastructure and offsetting greenhouse gas emissions.\n\n📊 Step 5 — Self-Check:\n  · Content: Full marks — main idea + all key points covered\n  · Form: One single sentence, 5-75 words\n  · Grammar: Correct sentence structure, capitalised start\n  · Vocabulary: Natural word choice with simple replacement"}], "we": []};
+const ALL_TITLES = {"di": [{"no": 2, "title": "Typing Hands"}, {"no": 7, "title": "Height of Tree"}, {"no": 8, "title": "Earth Structure"}, {"no": 11, "title": "Global Warming"}, {"no": 18, "title": "Upper Arms"}, {"no": 23, "title": "World Water"}, {"no": 31, "title": "Earth Crust (2)"}, {"no": 33, "title": "Australian Population Density 1"}, {"no": 36, "title": "Oxbow Lake"}, {"no": 45, "title": "Apartment Plan"}, {"no": 46, "title": "Language Shares"}, {"no": 48, "title": "Sprouting"}, {"no": 131, "title": "Frog Life Cycle 1"}, {"no": 163, "title": "Input and Output"}, {"no": 173, "title": "Solar Yard Light"}, {"no": 178, "title": "Apple Life Cycle"}, {"no": 215, "title": "Food Pyramid 1"}, {"no": 222, "title": "Parts of Tree"}, {"no": 223, "title": "Solar Eclipse 1"}, {"no": 224, "title": "Bird Feeder"}, {"no": 231, "title": "Bird Migration"}, {"no": 234, "title": "Food&Oil Price"}, {"no": 235, "title": "Government Expenditure"}, {"no": 268, "title": "Egypt Trading"}, {"no": 278, "title": "Closed-loop Recycling"}, {"no": 324, "title": "Music Download"}, {"no": 329, "title": "Gallery Map"}, {"no": 331, "title": "The Eatwell Plate"}, {"no": 334, "title": "Iron Age Hut"}, {"no": 336, "title": "Australian Population Density"}, {"no": 337, "title": "Tomato Life Cycle"}, {"no": 341, "title": "Rainforest Distribution"}, {"no": 347, "title": "Sunshine Hours in France"}, {"no": 369, "title": "Inbound Visits"}, {"no": 406, "title": "Wind Machine"}, {"no": 421, "title": "Germination"}, {"no": 423, "title": "Water Cycle"}, {"no": 428, "title": "Computer Then and Now"}, {"no": 444, "title": "Formation of Iceberg"}, {"no": 449, "title": "Grape Fruits"}, {"no": 455, "title": "Population Age Groups"}, {"no": 461, "title": "Upper Arms (B)"}, {"no": 496, "title": "Egg Experiment"}, {"no": 529, "title": "Wind Power Capacity"}, {"no": 535, "title": "Beijing Weather"}, {"no": 546, "title": "E-waste"}, {"no": 548, "title": "Ship Lock"}, {"no": 554, "title": "Air Composition"}, {"no": 558, "title": "Plastic Bottle Recycling"}, {"no": 680, "title": "Chocolate Consumers"}, {"no": 712, "title": "Airline Passengers"}, {"no": 717, "title": "Honey Production"}, {"no": 918, "title": "Best Food"}, {"no": 1191, "title": "Pet Ownership"}, {"no": 1217, "title": "Largest Banks"}, {"no": 1230, "title": "Birth Rate"}, {"no": 1233, "title": "Number of Vehicles"}, {"no": 1234, "title": "Renewable Energy by Sector"}, {"no": 1237, "title": "Online Purchase Trend"}, {"no": 1238, "title": "City Visits"}], "sgd": [{"no": 1, "title": "Accommodation Next Year"}, {"no": 2, "title": "Finding a Job After Graduation"}, {"no": 6, "title": "How to Manage Assignments"}, {"no": 8, "title": "Online Lectures"}, {"no": 9, "title": "AI Proofreading"}, {"no": 12, "title": "New Lecturer"}, {"no": 13, "title": "Where to Live in Final Year"}, {"no": 15, "title": "Keeping Active at University"}, {"no": 16, "title": "Project Meeting Place"}, {"no": 17, "title": "Prepare for Final Exams"}, {"no": 18, "title": "Dealing with Noisy Neighbours"}, {"no": 19, "title": "Reading Before Class"}, {"no": 22, "title": "Bookstore Closed"}, {"no": 23, "title": "Group Discussions"}, {"no": 24, "title": "Course to Take Next Semester"}, {"no": 26, "title": "Large Group Lectures"}, {"no": 27, "title": "Student Clubs"}, {"no": 28, "title": "The Development of AI"}, {"no": 29, "title": "The New Experience at University"}, {"no": 31, "title": "Draft Assignment"}, {"no": 32, "title": "The New Library"}, {"no": 33, "title": "The New Timetable"}, {"no": 34, "title": "What to Have for Lunch"}, {"no": 35, "title": "Sociology Conference"}, {"no": 36, "title": "Environmentally Friendly University"}, {"no": 37, "title": "Joining or Starting a Club"}, {"no": 38, "title": "Street Graffiti and Public Art"}, {"no": 39, "title": "Student Accommodation Choices"}, {"no": 40, "title": "Compulsory Summer Classes"}, {"no": 41, "title": "Different Types of Classes"}, {"no": 42, "title": "Attending an Evening Event"}, {"no": 43, "title": "Revising the First Essay"}, {"no": 44, "title": "Gap Year"}], "rl": [{"no": 1, "title": "Australian export"}, {"no": 2, "title": "Brain development"}, {"no": 3, "title": "Darkness between galaxies"}, {"no": 4, "title": "European Countries' Educational Expenditure"}, {"no": 5, "title": "Bomb calorimeter"}, {"no": 6, "title": "High LG and Low LG"}, {"no": 7, "title": "Napoleon III Renovation of Paris"}, {"no": 8, "title": "Pavlov's Experiment"}, {"no": 9, "title": "Wages, consumption and household debt"}, {"no": 10, "title": "Air Pollution"}, {"no": 11, "title": "Monkey and Typewriter"}, {"no": 12, "title": "Frogs"}, {"no": 13, "title": "Low child birth rate"}, {"no": 14, "title": "Thermodynamic theory & kinetic theory"}, {"no": 15, "title": "Dimensions"}, {"no": 16, "title": "Open Border"}, {"no": 17, "title": "Visual Description"}, {"no": 18, "title": "The Increasing Productivity"}, {"no": 19, "title": "Poverty in Rural Areas"}, {"no": 20, "title": "UK City Population"}, {"no": 21, "title": "Mars"}, {"no": 22, "title": "Edmund Wilson"}, {"no": 23, "title": "Dissociation of a Personality"}, {"no": 24, "title": "Children Overweight"}, {"no": 25, "title": "Incentives for Sales People"}, {"no": 26, "title": "Teaching"}, {"no": 27, "title": "The Large Hadron Collider"}, {"no": 28, "title": "Food Labelling"}, {"no": 29, "title": "Civilization"}, {"no": 30, "title": "Library Tour"}, {"no": 31, "title": "3D Tech on Smartphones"}, {"no": 32, "title": "Honey bee"}, {"no": 33, "title": "Biomedical Engineering"}, {"no": 34, "title": "Gene & Protein"}, {"no": 35, "title": "Latin America Economic Reform"}, {"no": 36, "title": "Freedom of Speech in Britain"}, {"no": 37, "title": "How Human Use Materials"}, {"no": 38, "title": "Joseph Lister"}, {"no": 39, "title": "Stari Most"}, {"no": 40, "title": "Loggerhead turtles"}, {"no": 41, "title": "The Use of Web 2.0"}, {"no": 42, "title": "Europe Economic Structure"}, {"no": 43, "title": "Government Blogging"}, {"no": 44, "title": "Superman & Superpower"}, {"no": 45, "title": "Mars and Earth"}, {"no": 46, "title": "Early Robot"}, {"no": 47, "title": "Linguistics and Authority of Language"}, {"no": 48, "title": "Indian HIV Training"}, {"no": 49, "title": "US Economy"}, {"no": 50, "title": "The Best Rice"}, {"no": 51, "title": "Language Disorder"}, {"no": 52, "title": "Survey on media"}, {"no": 53, "title": "Economic and technological development"}, {"no": 54, "title": "Cloud Formation"}, {"no": 55, "title": "Underwater Antares Detectors for fish"}, {"no": 56, "title": "Warning Label"}, {"no": 57, "title": "Poverty and Health Crisis"}, {"no": 58, "title": "Greenhouse gas"}, {"no": 59, "title": "The Fourth Dimensions"}, {"no": 60, "title": "Politics of Happiness"}, {"no": 61, "title": "Practice and Performance"}, {"no": 62, "title": "London Taxi Service"}, {"no": 63, "title": "Image of animals"}, {"no": 64, "title": "Poetry Rhythm in Shakespeare"}, {"no": 65, "title": "Melbourne"}, {"no": 66, "title": "Banana"}, {"no": 67, "title": "Globalization in Us"}, {"no": 68, "title": "Measurement"}, {"no": 69, "title": "Ecological Footprint"}, {"no": 70, "title": "The Silk Road"}, {"no": 71, "title": "Win-win Solutions"}, {"no": 72, "title": "Interval training"}, {"no": 73, "title": "Sigmund Freud"}, {"no": 74, "title": "Dog's Growl Distinction"}, {"no": 75, "title": "Admission Processes in UK Universities"}, {"no": 76, "title": "Multi-Tasking Man"}, {"no": 77, "title": "Marshmallow Test"}, {"no": 78, "title": "Black Hole"}, {"no": 80, "title": "Venus"}, {"no": 81, "title": "Melatonin"}, {"no": 82, "title": "The Arctic and the Antarctic"}, {"no": 83, "title": "Book of Learning"}, {"no": 84, "title": "Push and Pull"}, {"no": 85, "title": "Technology erodes privacy"}, {"no": 86, "title": "Tutorial and Lecture"}, {"no": 87, "title": "Saturn Rings"}, {"no": 88, "title": "How to write a cover letter"}, {"no": 89, "title": "Characters and social community"}, {"no": 90, "title": "Feel nervous in presentation"}, {"no": 91, "title": "Age Structure"}, {"no": 92, "title": "Bipolar effects of technology on humans"}, {"no": 93, "title": "Port of Roman London"}, {"no": 94, "title": "Speed of sound and light"}, {"no": 95, "title": "Bilingual Parents"}, {"no": 96, "title": "Absolute zero"}, {"no": 97, "title": "USA cotton subsidy"}, {"no": 98, "title": "Globalization"}, {"no": 99, "title": "Agriculture and Climate Change"}], "rts": [{"no": 1, "title": "Returning damaged library book"}, {"no": 2, "title": "Late for Presentation"}, {"no": 3, "title": "A Missing Book"}, {"no": 4, "title": "Wrong Email"}, {"no": 5, "title": "Forgot to Bring the Keys"}, {"no": 6, "title": "Take Each Other's Assignment"}, {"no": 7, "title": "Asking a Librarian for Help with a Broken Photocopier"}, {"no": 8, "title": "Book to return"}, {"no": 9, "title": "Requesting payment assistant"}, {"no": 10, "title": "Borrow notes from your friend"}, {"no": 11, "title": "Forgotten Book"}, {"no": 12, "title": "Computer Broken"}, {"no": 13, "title": "Notebook Lost"}, {"no": 14, "title": "Holiday Research Project"}, {"no": 15, "title": "Food for Party"}, {"no": 16, "title": "Ask for Help from Colleague"}, {"no": 17, "title": "Extension for an Assignment"}, {"no": 18, "title": "A Room for Rehearsal"}, {"no": 19, "title": "Find a Book in the Library"}, {"no": 20, "title": "Student ID Card"}, {"no": 21, "title": "A Coat Left in the Library"}, {"no": 22, "title": "Asking Someone to Lower Noise in the Library"}, {"no": 23, "title": "Roommate's friend ate your food"}, {"no": 24, "title": "Noisy flatmates"}, {"no": 25, "title": "Neighbor playing loud music"}, {"no": 26, "title": "School Maintenance"}, {"no": 27, "title": "Lazy Roommate"}, {"no": 28, "title": "Library Power Out"}, {"no": 29, "title": "Red Traffic Light"}, {"no": 30, "title": "Changing classroom"}, {"no": 31, "title": "Roommates using your desk"}, {"no": 32, "title": "Give Speech Advice for a Friend"}, {"no": 33, "title": "Food Advice for School Cafeteria"}, {"no": 34, "title": "Ask for Advice Together"}, {"no": 35, "title": "Help with An Exhibition"}, {"no": 36, "title": "Help an Injured Classmate"}, {"no": 37, "title": "Volunteer for Open Week"}, {"no": 38, "title": "New Laptop"}, {"no": 39, "title": "Uncomfortable Dormitory"}, {"no": 40, "title": "Classroom Screen"}, {"no": 41, "title": "Inquiring about café job"}, {"no": 42, "title": "Ask Feedback from Your Tutor"}, {"no": 43, "title": "Advice for Friend"}, {"no": 44, "title": "Join A Sports Club in the Final Year"}, {"no": 45, "title": "Academic Resources"}, {"no": 46, "title": "Free Activities"}, {"no": 47, "title": "The Same Book"}, {"no": 48, "title": "An Academic Conference"}, {"no": 49, "title": "Tutorial and competition"}, {"no": 50, "title": "Housework"}, {"no": 51, "title": "Switch Rooms"}, {"no": 52, "title": "Change Study Time"}, {"no": 53, "title": "Household Timetable"}, {"no": 54, "title": "Party Dietary Restrictions"}, {"no": 55, "title": "Wrong Exam Time"}, {"no": 56, "title": "Don't Understand the Class Either"}, {"no": 57, "title": "Cannot Fully Understand the Lecture"}, {"no": 58, "title": "Group Member Not Finish Assignment"}, {"no": 59, "title": "Dinner Invitation"}, {"no": 60, "title": "Party for Parents"}, {"no": 61, "title": "Refusing a Classmate's Request to Copy Assignment"}, {"no": 62, "title": "Friend's Homework"}, {"no": 63, "title": "Volunteer during Orientation"}, {"no": 64, "title": "A Job Interview at a Shop"}], "sst": [{"no": 1, "title": "Safe Drinking Water"}, {"no": 2, "title": "Market Economy"}, {"no": 3, "title": "Globalization and Detraditionalization"}, {"no": 4, "title": "Canned Food"}, {"no": 5, "title": "Separation of Power"}, {"no": 6, "title": "Big Bang"}, {"no": 7, "title": "Good Ideas"}, {"no": 8, "title": "Definition of Risk"}, {"no": 9, "title": "IT Development"}, {"no": 10, "title": "Organizational Study"}, {"no": 11, "title": "Wildlife as Food"}, {"no": 12, "title": "Einstein"}, {"no": 13, "title": "Decline of Bees"}, {"no": 14, "title": "Misuse of Drugs"}, {"no": 15, "title": "Luxury Brand"}, {"no": 16, "title": "Literature in Poem"}, {"no": 17, "title": "Children Directors"}, {"no": 18, "title": "Dancing Bees"}, {"no": 19, "title": "Stone Balls"}, {"no": 20, "title": "Patients' Recovery"}, {"no": 21, "title": "Needs"}, {"no": 22, "title": "Australian Culture"}, {"no": 23, "title": "Smile of Mother"}, {"no": 24, "title": "Fight or Flight"}, {"no": 25, "title": "Roman Building"}, {"no": 26, "title": "Food Production"}, {"no": 27, "title": "Recycling Water"}, {"no": 28, "title": "Vitamin D"}, {"no": 29, "title": "Globalization"}, {"no": 30, "title": "Architecture Design"}, {"no": 31, "title": "Brand Image"}, {"no": 32, "title": "Change of Body Fat"}, {"no": 33, "title": "Genetic Impact"}, {"no": 34, "title": "History of English"}, {"no": 35, "title": "Paper Rejection"}, {"no": 36, "title": "Stock Market and Business"}, {"no": 37, "title": "Leadership"}, {"no": 38, "title": "Moods"}, {"no": 39, "title": "Automatic Driving (Similar)"}, {"no": 40, "title": "Management"}, {"no": 41, "title": "Newspaper Industry"}, {"no": 42, "title": "Internet Growth"}, {"no": 43, "title": "Chimpanzees"}, {"no": 44, "title": "DNA Pieces"}, {"no": 45, "title": "Industrial Revolution"}, {"no": 46, "title": "Hook Sentence"}, {"no": 47, "title": "Services and Goods"}, {"no": 48, "title": "Melatonin"}, {"no": 49, "title": "The Republic"}, {"no": 50, "title": "Internet and Journalism"}, {"no": 51, "title": "Women in Positions of Power"}, {"no": 52, "title": "DNA&RNA"}, {"no": 53, "title": "Definition of Globalization"}, {"no": 54, "title": "Mars and Earth"}, {"no": 55, "title": "Facial Recognition"}, {"no": 56, "title": "Inhabitants in Australia"}], "swt": [{"no": 1, "title": "2014 Olympics"}, {"no": 2, "title": "Australian Indigenous Food"}, {"no": 3, "title": "Children Allowance"}, {"no": 4, "title": "Compulsory Reburial"}, {"no": 5, "title": "Electric Cars"}, {"no": 6, "title": "Geothermal Energy"}, {"no": 7, "title": "House Mice"}, {"no": 8, "title": "Human Remains"}, {"no": 9, "title": "Malaysia Tourism"}, {"no": 10, "title": "Small Wars"}, {"no": 11, "title": "Museology"}, {"no": 12, "title": "Office Environment"}, {"no": 13, "title": "Online Teaching & Learning"}, {"no": 14, "title": "Paleolithic People"}, {"no": 15, "title": "Plants Research"}, {"no": 16, "title": "Tree Rings"}, {"no": 17, "title": "Wright Brothers"}, {"no": 18, "title": "Reading Aloud"}, {"no": 19, "title": "Silent Movies"}, {"no": 20, "title": "Pre-service Teachers"}, {"no": 21, "title": "Language Teaching Approaches"}, {"no": 22, "title": "Ecology and Climatology"}, {"no": 23, "title": "Independent Work"}, {"no": 24, "title": "Ethics"}, {"no": 25, "title": "Positive Mindset"}, {"no": 26, "title": "Public Speaking"}, {"no": 27, "title": "Solar Energy"}, {"no": 28, "title": "Importance of Soil"}, {"no": 29, "title": "Complaints"}, {"no": 30, "title": "Education Technology"}, {"no": 31, "title": "Image of Africa"}, {"no": 32, "title": "Legume"}, {"no": 33, "title": "New Women"}, {"no": 34, "title": "Bank Overdraft"}, {"no": 35, "title": "Deep-sea Mineral Resources"}, {"no": 36, "title": "Volcano Prediction"}, {"no": 37, "title": "Bertrand Russell"}, {"no": 38, "title": "Summer Vacation"}, {"no": 39, "title": "South Africa"}, {"no": 40, "title": "Product Life Cycle"}, {"no": 41, "title": "Environmental Technologies"}, {"no": 42, "title": "Natural Language"}, {"no": 43, "title": "Prior Knowledge"}, {"no": 44, "title": "Difference in Intelligence"}, {"no": 45, "title": "Immune System"}, {"no": 46, "title": "Electric Cars (C)"}, {"no": 47, "title": "Origin of Species"}, {"no": 48, "title": "Triangulation"}], "we": [{"no": "5", "title": "Essay topic 5"}, {"no": "9", "title": "Essay topic 9"}, {"no": "17", "title": "Essay topic 17"}, {"no": "24", "title": "Essay topic 24"}, {"no": "30", "title": "Essay topic 30"}, {"no": "35", "title": "Essay topic 35"}, {"no": "39", "title": "Essay topic 39"}, {"no": "40", "title": "Essay topic 40"}, {"no": "43", "title": "Essay topic 43"}, {"no": "46", "title": "Essay topic 46"}, {"no": "56", "title": "Essay topic 56"}, {"no": "63", "title": "Essay topic 63"}, {"no": "69", "title": "Essay topic 69"}, {"no": "71", "title": "Essay topic 71"}, {"no": "72", "title": "Essay topic 72"}, {"no": "75", "title": "Essay topic 75"}, {"no": "76", "title": "Essay topic 76"}, {"no": "77", "title": "Essay topic 77"}, {"no": "86", "title": "Essay topic 86"}, {"no": "90", "title": "Essay topic 90"}, {"no": "102", "title": "Essay topic 102"}, {"no": "106", "title": "Essay topic 106"}, {"no": "124", "title": "Essay topic 124"}, {"no": "149", "title": "Essay topic 149"}, {"no": "155", "title": "Essay topic 155"}, {"no": "156", "title": "Essay topic 156"}, {"no": "159", "title": "Essay topic 159"}, {"no": "160", "title": "Essay topic 160"}, {"no": "162", "title": "Essay topic 162"}, {"no": "163", "title": "Essay topic 163"}, {"no": "166", "title": "Essay topic 166"}, {"no": "170", "title": "Essay topic 170"}, {"no": "171", "title": "Essay topic 171"}, {"no": "173", "title": "Essay topic 173"}, {"no": "174", "title": "Essay topic 174"}, {"no": "183", "title": "Essay topic 183"}, {"no": "184", "title": "Essay topic 184"}, {"no": "195", "title": "Essay topic 195"}, {"no": "261", "title": "Essay topic 261"}]};
+const METHODS_DATA = [{"key": "di", "name": "Describe Image", "preview": ["Photo & People", "Chart & Graph", "Table & Map", "Process Flow"], "steps": ["Pick 2-3 main points: people, objects, numbers, or a trend", "Frame it: type of image → contents → details → conclusion", "Speak for 25-35 seconds; never stop, keep a steady pace"], "template": ["This image shows a picture of...", "In the picture, we can see...", "It is clear that the main point is...", "In conclusion, this is an informative image about..."]}, {"key": "sgd", "name": "Summarize Group Discussion", "preview": ["5 Steps", "15-Point Template", "3 Speakers"], "steps": ["Before listening: memorize the 15-Point template (main topic + 3 speakers × 5 points + summary)", "While listening: take notes per speaker (S1/S2/S3), at least 3 key phrases each, and note gender (he/she)", "After listening: sort notes into 3 groups and decide the main topic within 10 seconds", "Fill the template positions; rotate linkers (mentions / highlights / refers to) to avoid template detection", "Read fluently within 90 seconds; better to skip a point than pause"], "template": ["The group discussion mainly talks about [main topic].", "S1 mentions / highlights / refers to ... (5 points)", "S2 mentions / highlights / refers to ... (5 points)", "S3 mentions / highlights / refers to ... (5 points)", "To sum up, the three speakers mainly discuss..."]}, {"key": "rl", "name": "Retell Lecture", "preview": ["Template A · 8 Sentences", "Topic + 4 Key Phrases"], "steps": ["While listening (60-90s): note the topic + 4 key phrases only", "In the 10s preparation: recall the topic and the 4 phrases", "Speak for 40 seconds using Template A (8 sentences)", "Do not pause longer than 3 seconds; the recording stops automatically"], "template": ["In this lecture, the speaker mainly talks about [topic].", "It gives us a clear introduction to this topic.", "First, the speaker mentions [phrase 1].", "In addition, the lecture points out that [phrase 2] is/are quite important.", "Moreover, the speaker highlights [phrase 3].", "Besides, the lecture also refers to [phrase 4].", "These points help us understand [topic] better.", "To sum up, the lecture focuses on [topic], which is very informative and educational."]}, {"key": "rts", "name": "Respond to a Situation", "preview": ["Apology", "Request", "Complaint", "Suggestion", "Inquiry", "Negotiation", "Explanation", "Decline"], "steps": ["Read the scenario and find 3 things: who (professor/friend/colleague), the situation, the goal", "Decide the category: apology / request / complaint / suggestion / inquiry / negotiation / explanation / decline", "Apply that category's 5-sentence template and fill in the scenario words", "Speak for 40 seconds without stopping; use well / I mean to fill pauses"], "template_html": ["<div class=\"mcat\"><b>Apology:</b><br>Excuse me, I'm sorry for ___ / I apologize for ___.<br>Actually, it was because ___ / I accidentally ___.<br>And also, I want to take responsibility for ___.<br>So, I've already ___ / I'll make sure ___ / I can ___.<br>Anyway, thank you for your understanding. / I hope this resolves the issue.</div>", "<div class=\"mcat\"><b>Request:</b><br>Excuse me, ___ / Hi, I was wondering if ___.<br>The thing is, I'm ___ because ___ / the reason is ___.<br>And also, I understand you're busy... / it's quite urgent for me.<br>So, would I be able to ___? / could I ___?<br>Anyway, thank you for your time. / please let me know.</div>", "<div class=\"mcat\"><b>Complaint:</b><br>I'm afraid there's a problem with ___ / I'd like to report ___.<br>Actually, ___ was broken / ___ didn't work as expected.<br>And also, I normally don't like to complain, but ___.<br>So, could you ___ / I'd like you to ___.<br>Anyway, I really hope this can be improved soon.</div>", "<div class=\"mcat\"><b>Suggestion:</b><br>I appreciate ___ / I've noticed that ___.<br>The thing is, ___ is a problem / students are struggling with ___.<br>And also, I thought about this carefully before coming to you.<br>So, what if we ___ / maybe we could ___.<br>Anyway, I'm open to your suggestions. / it would be great if ___.</div>", "<div class=\"mcat\"><b>Inquiry:</b><br>Excuse me, I'm new here / I'm looking for ___.<br>Actually, I was wondering if ___ / could you tell me ___?<br>And also, I'm still new to this, so I don't know much yet.<br>So, I need this for ___ / because ___.<br>Anyway, thank you in advance. / I'd really appreciate it.</div>", "<div class=\"mcat\"><b>Negotiation:</b><br>I appreciate ___ / thanks so much for ___.<br>The thing is, I have a ___ at the same time / I'm not available ___.<br>And also, I really appreciate you considering my situation.<br>So, could we ___ instead? / would it be possible to ___?<br>Anyway, does that work for you? / I hope we can find a solution.</div>", "<div class=\"mcat\"><b>Explanation:</b><br>I understand your concern / let me explain ___.<br>Actually, what happened was ___ / the situation is ___.<br>And also, I want to be completely honest with you.<br>So, to be specific, ___ / for example, ___.<br>Anyway, I hope this clarifies. / let me know if you have questions.</div>", "<div class=\"mcat\"><b>Decline:</b><br>Thanks so much for ___ / I appreciate ___.<br>The thing is, I already have ___ / I'm afraid I can't ___.<br>And also, I truly value our relationship, but ___.<br>So, maybe we could ___ next time? / I can ___ instead.<br>Anyway, thanks for understanding. / hope it goes well!</div>"]}, {"key": "sst", "name": "Summarize Spoken Text", "preview": ["4 Steps", "50-70 Word Summary", "1 Paragraph"], "steps": ["While listening (60-90s): note key words and the lecture structure", "Summarize in 50-70 words: main idea + 2-3 supporting points", "Write one paragraph in a formal tone; no personal opinions", "Finish within 10 minutes; check grammar and spelling"], "template": ["The lecture mainly talks about...", "First, the speaker mentions...", "Then, the speaker explains that...", "In conclusion, the lecture focuses on..."]}, {"key": "swt", "name": "Summarize Written Text", "preview": ["One-Sentence Template", "Linkers: because/and/while"], "steps": ["Read the passage and find the topic sentence of each paragraph", "Combine the key ideas into ONE sentence (5-75 words)", "Keep the original meaning; never add your own opinion", "Use linkers: because, and, while, which, although"], "template": ["The report/article/study states that [main idea] because [reason], and [second point], while [third point].", "(One sentence only — the whole summary must be a single sentence.)"]}, {"key": "we", "name": "Write Essay", "preview": ["Essay Template", "Viewpoints: Agree / Disagree", "200-300 Words"], "steps": ["Read the prompt and decide your position (agree / disagree) within 1 minute", "Plan the structure: introduction + 2-3 body paragraphs + conclusion", "Use topic sentences and real examples in each body paragraph", "Write 200-300 words in 20 minutes; leave 2 minutes to check spelling"], "template": ["Introduction: It is often argued that... / In my opinion, ...", "Body 1: To begin with, ... Moreover, ...", "Body 2: Furthermore, ... Finally, ...", "Conclusion: In conclusion, I believe that..."]}];
+let currentFreeTab = "di";
+
+const TYPES = [
+  {key:"di", name:"DI", full:"Describe Image", plan:"speaking"},
+  {key:"sgd", name:"SGD", full:"Summarize Group Discussion", plan:"speaking"},
+  {key:"rl", name:"RL", full:"Retell Lecture", plan:"speaking"},
+  {key:"rts", name:"RTS", full:"Respond to a Situation", plan:"speaking"},
+  {key:"sst", name:"SST", full:"Summarize Spoken Text", plan:"speaking"},
+  {key:"swt", name:"SWT", full:"Summarize Written Text", plan:"writing"},
+  {key:"we", name:"WE", full:"Write Essay", plan:"writing"}
+];
+
+const LICENSE = {
+  MODE: "creem",
+  DEMO_MODE: false,
+  DEMO_KEYS: {speaking:"SPEAK-DEMO-2026", writing:"WRITE-DEMO-2026", complete:"ALL-DEMO-2026"},
+  DEMO_DATA_KEY: "",
+  CREEM_API: "https://misty-bread-90b5.jieting-huo6.workers.dev/",
+  PRODUCTS: {
+    speaking: "prod_1eYMSUyL2lCqWVajGS1SDG",
+    writing: "prod_3UudltkZ7Ceg5EAzfIMPNQ",
+    complete: "prod_lBoy1pG9mhtQUABEbfPVt"
+  }
+};
+
+let QUESTIONS = null;
+let dataKey = null;
+let unlockedPlan = null;
+let currentTab = "di";
+
+function esc(s){return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+
+function toggleFree(i){
+  const d = document.getElementById(i);
+  if(!d) return;
+  d.style.display = d.style.display==="block" ? "none" : "block";
+}
+
+function renderFreeTabs(){
+  document.getElementById("freeTabs").innerHTML = TYPES.map(t=>{
+    const cnt = (ALL_TITLES[t.key]||[]).length;
+    const freeN = (FREE[t.key]||[]).length;
+    return '<div class="tab'+(t.key===currentFreeTab?" active":"")+'" onclick="switchFreeTab(\''+t.key+'\')">'+t.name+' ('+cnt+')'+(freeN>0?' · 🎁'+freeN:'')+'</div>';
+  }).join("");
+}
+
+function switchFreeTab(key){
+  currentFreeTab = key;
+  renderFreeTabs();
+  renderFree();
+}
+
+function methodCardHtml(m){
+  const chips = (m.preview||[]).map(p=>'<span class="chip" onclick="lockedHint()">'+esc(p)+'</span>').join("");
+  return '<div class="mcard locked"><div class="mhead">📖 '+m.name+' Methods &amp; Templates <span style="font-size:11px;color:#854f0b">🔒 preview</span></div><div class="mbody show">'+
+    '<div class="note" style="margin-bottom:6px">This type includes:</div>'+chips+
+    '<div class="locknote">🔒 Subscribe &amp; enter your license key to view this method &amp; template.</div>'+
+    '</div></div>';
+}
+
+function renderFree(){
+  const key = currentFreeTab;
+  const m = METHODS_DATA.find(x=>x.key===key);
+  const mCard = m ? methodCardHtml(m) : "";
+  const freeMap = {};
+  (FREE[key]||[]).forEach(q=>{ freeMap[q.no]=q; });
+  const rows = [];
+  if(mCard) rows.push(mCard);
+  (ALL_TITLES[key]||[]).forEach(q=>{
+    const f = freeMap[q.no];
+    if(f){
+      const id = "fdd-"+key+"-"+q.no;
+      const audioHtml = f.audio ? '<div class="faudio">🎧 参考答案音频: <audio controls preload="none" src="free_audio/'+f.audio+'"></audio></div>' : '';
+      const paHtml = f.prompt_audio ? '<div class="qpro"><b>🎧 Listen to the lecture:</b><br><audio controls preload="none" src="free_audio/'+f.prompt_audio+'"></audio></div>' : '';
+      rows.push('<div class="qrow free" onclick="toggleFree(\''+id+'\')"><span class="qno">'+esc(String(f.no))+'</span><b>'+esc(f.title)+'</b> <span class="free-tag">🎁 free sample</span></div>');
+      rows.push('<div class="free-detail" id="'+id+'">'+paHtml+qpromptHtml(f)+
+        (f.work ? '<div class="qwork"><b>📖 Full Working Process:</b><br>'+esc(f.work).replace(/\n/g,'<br>')+'</div>' : '')+
+        '<b>📝 Sample answer:</b><br>'+esc(f.answer||"(answer not available)")+audioHtml+'</div>');
+    }else{
+      rows.push('<div class="qrow locked"><span class="qno">'+esc(String(q.no))+'</span>'+esc(q.title)+' <span class="ltag">🔒 member only</span></div>');
+    }
+  });
+  document.getElementById("freeList").innerHTML = rows.join("");
+}
+
+function renderMethods(){
+  const html = METHODS_DATA.map(m=>{
+    const steps = (m.steps||[]).map(s=>'<li>'+esc(s)+'</li>').join("");
+    let tpl = "";
+    if(m.template_html){
+      tpl = m.template_html.join("");
+    }else if(m.template){
+      tpl = m.template.map(s=>'<div class="tpl">'+esc(s).replace(/\[([^\]]+)\]/g,'<i>[$1]</i>')+'</div>').join("");
+    }
+    return '<div class="mcard"><div class="mhead" onclick="toggleMethod(this)">'+m.name+' <span>▼</span></div><div class="mbody">'+
+      (steps?'<h5>✍️ How to approach</h5><ol>'+steps+'</ol>':'')+
+      (tpl?'<h5>📝 Template</h5>'+tpl:'')+
+      '</div></div>';
+  }).join("");
+  document.getElementById("methodList").innerHTML = html;
+}
+
+function lockedHint(){
+  const err = document.getElementById("errMsg");
+  err.style.display="block";
+  err.textContent="🔒 This is member content. Subscribe above and enter your license key to unlock templates, methods & all answers.";
+  document.getElementById("gate").scrollIntoView({behavior:"smooth"});
+}
+
+function toggleMethod(head){
+  const body = head.parentNode.querySelector(".mbody");
+  if(!body) return;
+  body.classList.toggle("show");
+  head.querySelector("span").textContent = body.classList.contains("show") ? "▲" : "▼";
+}
+
+function b64ToBuf(b64){
+  const bin = atob(b64);
+  const u = new Uint8Array(bin.length);
+  for(let i=0;i<bin.length;i++) u[i]=bin.charCodeAt(i);
+  return u;
+}
+
+async function fetchDecrypt(url){
+  const resp = await fetch(url);
+  const buf = await resp.arrayBuffer();
+  const iv = buf.slice(0,12);
+  const ct = buf.slice(12);
+  const key = await crypto.subtle.importKey("raw", dataKey, {name:"AES-GCM"}, false, ["decrypt"]);
+  return crypto.subtle.decrypt({name:"AES-GCM", iv}, key, ct);
+}
+
+async function loadData(){
+  try{
+    const pt = await fetchDecrypt("data.json.enc");
+    QUESTIONS = JSON.parse(new TextDecoder().decode(pt));
+  }catch(e){
+    const support = typeof crypto !== "undefined" && crypto.subtle ? "supported" : "NOT SUPPORTED";
+    document.getElementById("loading").innerHTML = "⚠ Decryption failed: " + (e && e.message ? e.message : "unknown error") +
+      "<br>Web Crypto: " + support + "<br>Please use the latest Chrome / Edge / Safari.";
+    return;
+  }
+  currentTab = "di";
+  document.getElementById("loading").style.display="none";
+  document.getElementById("memberArea").style.display="block";
+  document.getElementById("methods").style.display="block";
+  renderMethods();
+  renderTabs();
+  render("");
+}
+
+function tabLocked(key){
+  if(!unlockedPlan) return true;
+  const t = TYPES.find(x=>x.key===key);
+  return unlockedPlan==="complete" ? false : (t.plan!==unlockedPlan);
+}
+
+function renderTabs(){
+  document.getElementById("tabs").innerHTML = TYPES.map(t=>{
+    const locked = tabLocked(t.key);
+    const cnt = (QUESTIONS[t.key]||[]).length;
+    return '<div class="tab'+(t.key===currentTab?" active":"")+(locked?" locked":"")+'" onclick="switchTab(\''+t.key+'\')">'+t.name+' ('+cnt+')'+(locked?" 🔒":"")+'</div>';
+  }).join("");
+}
+
+function switchTab(key){
+  currentTab = key;
+  renderTabs();
+  render("");
+}
+
+async function playQ(no, btn, url){
+  btn.disabled = true; btn.textContent = "Decrypting...";
+  try{
+    const pt = await fetchDecrypt(url);
+    const blob = new Blob([pt], {type:"audio/mpeg"});
+    const a = new Audio(URL.createObjectURL(blob));
+    a.play();
+    btn.textContent = "▶ 播放";
+    btn.disabled = false;
+  }catch(e){
+    btn.textContent = "⚠ 播放失败";
+    btn.disabled = false;
+  }
+}
+
+function qpromptHtml(q){
+  let h = "";
+  if(q.prompt_img) h += '<div class="qpro"><b>📌 Task / Question:</b><br><img class="qimg" src="'+q.prompt_img+'" alt="question image" loading="lazy"></div>';
+  if(q.prompt_audio) h += '<div class="qpro"><b>🎧 Listen to the lecture:</b><br><button class="play" onclick="playQ(\''+q.no+'\',this,\''+q.prompt_audio+'\')">▶ 播放题目音频</button></div>';
+  if(q.prompt) h += '<div class="qpro"><b>📌 Task / Question:</b><br>'+esc(q.prompt).replace(/\n/g,'<br>')+'</div>';
+  return h;
+}
+
+function qcard(q, kw){
+  const locked = tabLocked(currentTab);
+  const open = !locked;
+  const tag = locked ? '<span class="tag" style="background:#faeeda;color:#854f0b">🔒 Member</span>' : '<span class="tag" style="background:#e1f5ee;color:#0f6e56">✓ Unlocked</span>';
+  const click = open ? ' onclick="toggle(\''+q.no+'\')"' : '';
+  const cls = open ? '' : ' style="opacity:.5"';
+  const kw2 = kw ? kw.toLowerCase() : "";
+  const ti = q.title.toLowerCase().indexOf(kw2);
+  const hl = (kw && ti>=0) ? q.title.slice(0,ti)+'<b style="background:#faeeda">'+q.title.slice(ti,ti+kw.length)+'</b>'+q.title.slice(ti+kw.length) : esc(q.title);
+  const detail = open ? '<div class="detail" id="d-'+q.no+'">'+qpromptHtml(q)+
+    (q.work ? '<div class="qwork"><b>📖 Full Working Process:</b><br>'+esc(q.work).replace(/\n/g,'<br>')+'</div>' : '')+
+    '<div class="ans"><b>📝 Model answer:</b><br>'+esc(q.answer)+'</div>'+
+    (q.audio ? '<div class="au"><button class="play" onclick="playQ(\''+q.no+'\',this,\''+q.audio+'\')">▶ 播放音频</button></div>' : '')+'</div>' : '';
+  return '<div class="qcard'+cls+'"'+click+'><div class="qt">'+hl+tag+'</div><div class="meta">#'+q.no+(q.audio?" · audio":"")+'</div>'+detail+'</div>';
+}
+
+function toggle(no){
+  const el = document.getElementById("d-"+no);
+  if(el){ el.style.display = el.style.display==="block" ? "none" : "block"; }
+}
+
+function render(kw){
+  const locked = tabLocked(currentTab);
+  const items = (QUESTIONS[currentTab]||[]).filter(q=>!kw || q.title.toLowerCase().includes(kw) || (q.answer||"").toLowerCase().includes(kw));
+  document.getElementById("count").textContent = (QUESTIONS[currentTab]||[]).length + " questions" + (kw ? " · "+items.length+" matched" : "");
+  document.getElementById("list").innerHTML = items.map(q=>qcard(q,kw)).join("");
+  if(locked){
+    document.getElementById("list").insertAdjacentHTML("afterbegin", '<div style="background:#faeeda;border-radius:8px;padding:10px 14px;font-size:13px;margin-bottom:12px">🔒 This section is locked for your plan.</div>');
+  }
+}
+
+function applyUnlock(plan, keyBytes){
+  unlockedPlan = plan;
+  dataKey = keyBytes;
+  document.getElementById("gate").style.display="none";
+  document.getElementById("freeSec").style.display="none";
+  document.getElementById("loading").style.display="block";
+  loadData().catch(()=>{
+    document.getElementById("loading").textContent = "⚠ 解密失败，请稍后重试";
+  });
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function unlock(){
+  const key = document.getElementById("keyInput").value.trim();
+  const err = document.getElementById("errMsg");
+  const ok = document.getElementById("okMsg");
+  err.style.display="none"; ok.style.display="none";
+  if(!key){ err.style.display="block"; err.textContent="Please enter your license key."; return; }
+
+  if(LICENSE.DEMO_MODE){
+    const k = key.toUpperCase();
+    let plan = null;
+    if(k===LICENSE.DEMO_KEYS.speaking) plan="speaking";
+    else if(k===LICENSE.DEMO_KEYS.writing) plan="writing";
+    else if(k===LICENSE.DEMO_KEYS.complete) plan="complete";
+    if(plan){
+      ok.style.display="block"; ok.textContent="✅ Plan unlocked! Decrypting content...";
+      applyUnlock(plan, b64ToBuf(LICENSE.DEMO_DATA_KEY));
+      return;
+    }
+    err.style.display="block"; err.textContent="Invalid key. Demo keys: SPEAK-DEMO-2026 / WRITE-DEMO-2026 / ALL-DEMO-2026";
+    return;
+  }
+
+  // Creem mode: validate via Worker proxy
+  if(!LICENSE.CREEM_API){ err.style.display="block"; err.textContent="License server not configured yet."; return; }
+  fetch(LICENSE.CREEM_API, {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({key:key})})
+    .then(r=>r.json()).then(data=>{
+      if(data && data.valid && data.plan && data.data_key){
+        ok.style.display="block"; ok.textContent="✅ "+data.plan+" plan unlocked!";
+        applyUnlock(data.plan, b64ToBuf(data.data_key));
+      } else {
+        err.style.display="block"; err.textContent="Invalid or expired license key.";
+      }
+    }).catch(()=>{ err.style.display="block"; err.textContent="Cannot reach license server."; });
+}
+
+document.getElementById("search").addEventListener("input", function(e){
+  render(e.target.value.trim().toLowerCase());
+});
+
+(function init(){
+  renderFreeTabs();
+  renderFree();
+  if(LICENSE.DEMO_MODE){
+    document.getElementById("demoHint").textContent = "Demo mode — keys: SPEAK-DEMO-2026 / WRITE-DEMO-2026 / ALL-DEMO-2026";
+  }
+})();
+</script>
+</body>
+</html>
