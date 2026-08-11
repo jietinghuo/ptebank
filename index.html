@@ -121,8 +121,8 @@ footer{text-align:center;font-size:12px;color:#888780;margin:22px 0 8px}
     <h2>🔑 Member Area</h2>
     <p>Already subscribed? Enter your license key to unlock all questions.</p>
     <input id="keyInput" placeholder="XXXX-XXXX-XXXX-XXXX" autocomplete="off">
-    <div><button onclick="unlock()">Unlock</button></div>
-    <div class="err" id="errMsg">Invalid or expired license key.</div>
+    <div><button onclick='unlock()'>Unlock</button></div>
+    <div class='err" id="errMsg">Invalid or expired license key.</div>
     <div class="ok" id="okMsg"></div>
     <div class="demo" id="demoHint"></div>
   </div>
@@ -196,7 +196,7 @@ function renderFreeTabs(){
   document.getElementById("freeTabs").innerHTML = TYPES.map(t=>{
     const cnt = (ALL_TITLES[t.key]||[]).length;
     const freeN = (FREE[t.key]||[]).length;
-    return '<div class="tab'+(t.key===currentFreeTab?" active":"")+'" onclick="switchFreeTab(\''+t.key+'\')">'+t.name+' ('+cnt+')'+(freeN>0?' · 🎁'+freeN:'')+'</div>';
+    return `<div class="tab${t.key===currentFreeTab?" active":""}" onclick='switchFreeTab(&quot;${t.key}&quot;)'><span class="tname">${t.name}</span> <span class="tcount">(${cnt})</span>${freeN>0?' · 🎁'+freeN:''}</div>`;
   }).join("");
 }
 
@@ -231,12 +231,11 @@ function renderFree(){
       if(f.prompt_img || f.prompt){
         taskHtml = '<div class="qpro"><b>📌 Task / Question:</b><br>';
         if(f.prompt_img) taskHtml += '<img class="qimg" src="'+f.prompt_img+'" alt="question image" loading="lazy"><br>';
-        taskHtml += esc(f.prompt||'').replace(/
-/g,'<br>')+'</div>';
+        taskHtml += esc(f.prompt||'').replace(/\n/g,'<br>')+'</div>';
       }
       const listenHtml = f.prompt_audio ? '<div class="qpro"><b>🎧 Listen to the lecture:</b><br><audio controls preload="none" src="free_audio/'+f.prompt_audio+'"></audio></div>' : '';
       const audioHtml = f.audio ? '<div class="faudio">🎧 Answer Audio: <audio controls preload="none" src="free_audio/'+f.audio+'"></audio></div>' : '';
-      rows.push('<div class="qrow free" onclick="toggleFree(\''+id+'\')"><span class="qno">'+esc(String(f.no))+'</span><b>'+esc(f.title)+'</b> <span class="free-tag">🎁 free sample</span></div>');
+      rows.push(`<div class="qrow free" onclick='toggleFree(&quot;${id}&quot;)'><span class="qno">${esc(String(f.no))}</span><b>${esc(f.title)}</b> <span class="free-tag">🎁 free sample</span></div>`);
       rows.push('<div class="free-detail" id="'+id+'">'+taskHtml+listenHtml+
         (f.work ? '<div class="qwork"><b>📖 Full Working Process:</b><br>'+esc(f.work).replace(/\n/g,'<br>')+'</div>' : '')+
         '<div class="ans"><b>📝 Sample answer:</b><br>'+esc(f.answer||"(answer not available)")+'</div>'+audioHtml+'</div>');
@@ -256,7 +255,7 @@ function renderMethods(){
     }else if(m.template){
       tpl = m.template.map(s=>'<div class="tpl">'+esc(s).replace(/\[([^\]]+)\]/g,'<i>[$1]</i>')+'</div>').join("");
     }
-    return '<div class="mcard"><div class="mhead" onclick="toggleMethod(this)">'+m.name+' <span>▼</span></div><div class="mbody">'+
+    return `<div class="mcard"><div class="mhead" onclick='toggleMethod(this)'>${m.name} <span>▼</span></div><div class="mbody">`+
       (steps?'<h5>✍️ How to approach</h5><ol>'+steps+'</ol>':'')+
       (tpl?'<h5>📝 Template</h5>'+tpl:'')+
       '</div></div>';
@@ -323,7 +322,7 @@ function renderTabs(){
   document.getElementById("tabs").innerHTML = TYPES.map(t=>{
     const locked = tabLocked(t.key);
     const cnt = (QUESTIONS[t.key]||[]).length;
-    return '<div class="tab'+(t.key===currentTab?" active":"")+(locked?" locked":"")+'" onclick="switchTab(\''+t.key+'\')">'+t.name+' ('+cnt+')'+(locked?" 🔒":"")+'</div>';
+    return `<div class="tab${t.key===currentTab?" active":""}${locked?" locked":""}" onclick='switchTab(&quot;${t.key}&quot;)'><span class="tname">${t.name}</span> <span class="tcount">(${cnt})</span>${locked?' 🔒':""}</div>`;
   }).join("");
 }
 
@@ -349,18 +348,22 @@ async function playQ(no, btn, url){
 }
 
 function qpromptHtml(q){
+  // 顺序：Task/Question（图+文字合并） → Listen to the lecture
   let h = "";
-  if(q.prompt_img) h += '<div class="qpro"><b>📌 Task / Question:</b><br><img class="qimg" src="'+q.prompt_img+'" alt="question image" loading="lazy"></div>';
-  if(q.prompt_audio) h += '<div class="qpro"><b>🎧 Listen to the lecture:</b><br><button class="play" onclick="playQ(\''+q.no+'\',this,\''+q.prompt_audio+'\')">▶ Play</button></div>';
-  if(q.prompt) h += '<div class="qpro"><b>📌 Task / Question:</b><br>'+esc(q.prompt).replace(/\n/g,'<br>')+'</div>';
+  if(q.prompt_img || q.prompt){
+    h += '<div class="qpro"><b>📌 Task / Question:</b><br>';
+    if(q.prompt_img) h += '<img class="qimg" src="'+q.prompt_img+'" alt="question image" loading="lazy"><br>';
+    h += esc(q.prompt||'').replace(/\n/g,'<br>')+'</div>';
+  }
+  if(q.prompt_audio) h += `<div class="qpro"><b>🎧 Listen to the lecture:</b><br><button class="play" onclick='playQ(&quot;${q.no}&quot;,this,&quot;${q.prompt_audio}&quot;)'>▶ Play</button></div>`;
   return h;
 }
 
 function qcard(q, kw){
   const locked = tabLocked(currentTab);
   const open = !locked;
-  const tag = locked ? '<span class="tag" style="background:#faeeda;color:#854f0b">🔒 Member</span>' : '<span class="tag" style="background:#e1f5ee;color:#0f6e56">✓ Unlocked</span>';
-  const click = open ? ' onclick="toggle(\''+q.no+'\')"' : '';
+  const tag = locked ? `<span class="tag" style="background:#faeeda;color:#854f0b">🔒 Member</span>` : `<span class="tag" style="background:#e1f5ee;color:#0f6e56">✓ Unlocked</span>`;
+const click = open ? ` onclick='toggle(&quot;${q.no}&quot;)'` : '';
   const cls = open ? '' : ' style="opacity:.5"';
   const kw2 = kw ? kw.toLowerCase() : "";
   const ti = q.title.toLowerCase().indexOf(kw2);
@@ -368,8 +371,8 @@ function qcard(q, kw){
   const detail = open ? '<div class="detail" id="d-'+q.no+'">'+qpromptHtml(q)+
     (q.work ? '<div class="qwork"><b>📖 Full Working Process:</b><br>'+esc(q.work).replace(/\n/g,'<br>')+'</div>' : '')+
     '<div class="ans"><b>📝 Model answer:</b><br>'+esc(q.answer)+'</div>'+
-    (q.audio ? '<div class="au"><b>🎧 Answer Audio:</b> <button class="play" onclick="playQ(\''+q.no+\'',this,\''+q.audio+\'')">▶ Play</button></div>' : '')+'</div>' : '';
-  return '<div class="qcard'+cls+'"'+click+'><div class="qt">'+hl+tag+'</div><div class="meta">#'+q.no+(q.audio?" · audio":"")+'</div>'+detail+'</div>';
+    (q.audio ? `<div class="au"><b>🎧 Answer Audio:</b> <button class="play" onclick='playQ(&quot;${q.no}&quot;,this,&quot;${q.audio}&quot;)'>▶ Play</button></div>` : '')+'</div>' : '';
+  return `<div class="qcard\${cls}" \${click}><div class="qt">\${hl}\${tag}</div><div class="meta">#\${q.no}\${q.audio?" · audio":""}</div>\${detail}</div>`;
 }
 
 function toggle(no){
