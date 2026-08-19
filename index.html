@@ -342,7 +342,7 @@ function switchTab(key){
 async function playQ(no, btn, url){
   btn.disabled = true; btn.textContent = "Decrypting...";
   try{
-    const pt = await fetchDecrypt(url);
+    const pt = await fetchDecrypt(url + ".enc");
     const blob = new Blob([pt], {type:"audio/mpeg"});
     const a = new Audio(URL.createObjectURL(blob));
     a.play();
